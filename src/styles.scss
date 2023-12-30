@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tile-enter {
+  animation: tileEnter .3s ease-out forwards;
+}
+
+@keyframes tileEnter {
+  0% {
+    scale: 0;
+  }
+  75% {
+    scale: 1.05;
+  }
+  100% {
+    scale: 1;
+  }
+}
