@@ -1,1 +1,63 @@
-<ng-content></ng-content>
+<div [ngStyle]="{
+gridTemplateColumns: 'repeat(' + countOfCols + ', minmax(0, 1fr))',
+gap: gapInRem + 'rem',
+padding: paddingInRem + 'rem'
+}" class="grid shadow-inner rounded-xl border border-red mx-auto bg-[#ddd] w-[22rem] sm:w-[40rem] md:w-[40rem] lg:w-[62rem] xl:w-[73rem] 2xl:w-[95rem] 3xl:w-[117rem] 4xl:w-[139rem]" id="list">
+  <app-tile class="flex items-center justify-center text-2xl relative"
+            [parentCols]="countOfCols"
+            [parentGap]="gapInRem"
+            [parentPadding]="paddingInRem"
+            [parentWidth]="currentBreakpointContainerWidth"
+            *ngFor="let i of tiles; let index = index"
+            [rows]="i.rows" [cols]="i.cols">
+    <fd-tile *ngIf="i.tile2" [double]="true" type="feed" size="s" class="inside">
+      <div fd-tile-header>
+        <h1 fd-tile-title>Feed Tile Title Text sed do eiusmod</h1>
+        <h2 fd-tile-subtitle>Feed Tile Subtitle Text</h2>
+      </div>
+      <div fd-tile-content [twoColumn]="true">
+        <div fd-tile-section>
+          <div fd-tile-content-text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt magna aliqua.
+          </div>
+          <div fd-tile-content-byline>About 1 minute ago.</div>
+        </div>
+        <div fd-tile-section>
+          <div fd-numeric-content>
+            <div fd-numeric-content-kpi-container>
+              <div fd-numeric-content-kpi state="negative">35</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fd-tile-footer>
+        <div fd-tile-footer-text>Footer</div>
+      </div>
+    </fd-tile>
+    <fd-tile *ngIf="i.tile" type="launch" size="s" class="inside">
+      <div fd-tile-header>
+        <h1 fd-tile-title>Launch Tile Title Text</h1>
+        <h2 fd-tile-subtitle>Launch Tile Subtitle</h2>
+      </div>
+      <div fd-tile-content>
+        <div fd-numeric-content>
+          <div fd-numeric-content-launch-icon-container>
+            <i fd-numeric-content-launch-icon glyph="line-charts" role="presentation"></i>
+          </div>
+          <div fd-numeric-content-kpi-container>
+            <div fd-numeric-content-kpi state="positive">1234</div>
+          </div>
+        </div>
+      </div>
+      <div fd-tile-footer>
+        <span fd-tile-footer-text>Unit, Notification</span>
+      </div>
+    </fd-tile>
+    <lord-icon *ngIf="!i.tile && !i.tile2"
+      src="https://cdn.lordicon.com/{{['qvyppzqz', 'abwrkdvl', 'xzalkbkz', 'ofwxettw', 'laqlvddb'][index % 5]}}.json"
+      trigger="hover"
+      class="w-5/6 h-5/6 inside">
+    </lord-icon>
+    <div *ngIf="!i.tile && !i.tile2" class="absolute -bottom-6 left-0 w-full font-bold text-center" style="font-size: 10px">لیبل آیکن</div>
+  </app-tile>
+</div>

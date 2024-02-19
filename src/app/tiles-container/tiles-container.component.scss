@@ -1,0 +1,5 @@
+::ng-deep {
+  fd-tile, .fd-tile {
+    @apply block w-full min-w-full max-w-full h-full min-h-full max-h-full rounded-xl shadow-none #{!important};
+  }
+}
